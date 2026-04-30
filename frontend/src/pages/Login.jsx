@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ShieldPlus } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const Login = () => {
   const [username, setUsername] = useState('doctor');
@@ -12,7 +13,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/login', { username, password });
+      const res = await axios.post(`${API_BASE_URL}/login`, { username, password });
       if (res.status === 200) {
         localStorage.setItem('isAuth', 'true');
         navigate('/');
@@ -28,7 +29,7 @@ const Login = () => {
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <ShieldPlus size={48} color="var(--primary-color)" />
           <h2 style={{ marginTop: '1rem' }}>Doctor Login</h2>
-          <p style={{ color: 'var(--text-muted)' }}>Clinical Decision Support System</p>
+          <p style={{ color: 'var(--text-muted)' }}>OncoRisk</p>
         </div>
         
         {error && <div style={{ backgroundColor: 'rgba(255, 107, 107, 0.1)', color: 'var(--danger-color)', padding: '0.75rem', borderRadius: '8px', marginBottom: '1rem', textAlign: 'center' }}>{error}</div>}

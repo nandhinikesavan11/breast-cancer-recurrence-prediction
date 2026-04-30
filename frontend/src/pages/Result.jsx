@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { Download, AlertTriangle, CheckCircle, ArrowLeft } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -56,7 +57,7 @@ const Result = () => {
   const probPercent = (probability * 100).toFixed(1);
 
   const handleDownload = () => {
-    window.open(`http://localhost:5000/generate-report/${id}`, '_blank');
+    window.open(`${API_BASE_URL}/generate-report/${id}`, '_blank');
   };
 
   return (

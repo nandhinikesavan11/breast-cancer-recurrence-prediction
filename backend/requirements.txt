@@ -6,3 +6,4 @@ shap==0.44.0
 reportlab==4.0.7
 pandas==2.1.4
 numpy==1.26.2
+gunicorn==21.2.0
